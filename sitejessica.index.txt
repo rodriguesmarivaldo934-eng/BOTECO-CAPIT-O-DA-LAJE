@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BOTECO CAPITÃO DA LAJE — Cardápio</title>
+<style>
+  :root{
+    --bg:#f4efe6;
+    --wood:#a87448;
+    --dark:#3b2b22;
+    --accent:#d97706;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+  header{background:var(--wood);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:30}
+  header img{height:56px;border-radius:8px;object-fit:cover}
+  header .brand h1{margin:0;font-size:1.25rem}
+  .container{max-width:980px;margin:18px auto;padding:0 16px 100px}
+  .hero{background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center}
+  .hero img{width:180px;height:120px;object-fit:cover;border-radius:8px}
+  .hero .txt h2{margin:0 0 6px 0}
+  .sections{margin-top:14px;display:grid;grid-template-columns:1fr 320px;gap:14px}
+  .left{display:block}
+  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.06);margin-bottom:14px}
+  .section-img{width:100%;border-radius:8px;display:block;margin-bottom:10px;object-fit:cover}
+  h3{margin:0 0 10px 0}
+  .menu-list{list-style:none;padding:0;margin:0}
+  .menu-list li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eee;align-items:center}
+  .menu-list li:last-child{border-bottom:none}
+  .item-details{flex-grow:1;margin-right:12px}
+  .item-details span{display:block;font-weight:600}
+  .item-details small{display:block;font-size:.75rem;opacity:.8;margin-top:2px}
+  .add-btn{background:var(--accent);color:#fff;border:none;padding:6px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+  aside .info{position:sticky;top:84px}
+  .cart-fab{position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;padding:12px 14px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,0.18);z-index:80;border:none;font-weight:800;cursor:pointer}
+  .cart-panel{position:fixed;right:16px;bottom:86px;width:360px;max-height:70vh;overflow-y:auto;background:#fff;border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,0.18);display:none;z-index:90;transition:opacity 0.2s, transform 0.2s;opacity:0;transform:translateY(10px)}
+  .cart-panel.is-open{opacity:1;transform:translateY(0)}
+  .cart-row{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;align-items:center}
+  .qty{display:flex;gap:6px;align-items:center}
+  .qty button{background:var(--wood);border:none;color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer}
+  .whatsapp-btn{display:block;text-decoration:none;background:#25D366;color:#fff;padding:.7rem;border-radius:8px;text-align:center;font-weight:700;margin-top:.6rem}
+  .warning-text{color:red;font-size:.8rem;margin-top:4px;display:none}
+  footer{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:.6rem 1rem;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center;z-index:20}
+  @media (max-width:900px){
+    .sections{grid-template-columns:1fr}
+    .cart-panel{right:8px;left:8px;width:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="crops/part_01.jpg" alt="logo">
+  <div class="brand">
+    <h1>BOTECO CAPITÃO DA LAJE</h1>
+    <div style="font-size:.85rem;opacity:.95">Peça pelo WhatsApp — Entrega/Retirada</div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero card" aria-label="introducao">
+    <img src="crops/part_02.jpg" alt="cartaz">
+    <div class="txt">
+      <h2>Bem-vindo ao Boteco</h2>
+      <p>Selecione os itens abaixo e envie seu pedido direto para o WhatsApp. Não esqueça de preencher seu **nome** antes de enviar.</p>
+    </div>
+  </section>
+
+  <div class="sections">
+    <div class="left">
+
+      <section class="card" id="executivos">
+        <h3>Executivos 🍽️</h3>
+        <img class="section-img" src="crops/part_03.jpg" alt="Executivos">
+        <ul class="menu-list" id="list-executivos">
+          <li>
+            <div class="item-details">
+              <span>Carne de Sol com Pure e Queijo</span>
+              <small>Carne de sol, purê de abóbora e queijo coalho grelhado.</small>
+            </div>
+            <strong>R$ 39,00</strong><button class="add-btn" onclick="addToCart('exe1','Carne de Sol c/ Pure e Queijo',39.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Bisteca Grelhada</span>
+              <small>Bisteca suína grelhada com arroz, feijão e batata frita.</small>
+            </div>
+            <strong>R$ 35,00</strong><button class="add-btn" onclick="addToCart('exe2','Bisteca Grelhada',35.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Frango Grelhado</span>
+              <small>Filé de frango grelhado com arroz, salada e legumes.</small>
+            </div>
+            <strong>R$ 32,00</strong><button class="add-btn" onclick="addToCart('exe3','Frango Grelhado',32.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Filé de Tilápia c/ Arroz de Camarão</span>
+              <small>Filé de tilápia grelhada servida com arroz cremoso de camarão.</small>
+            </div>
+            <strong>R$ 45,00</strong><button class="add-btn" onclick="addToCart('exe4','Tilapia c/ Arroz de Camarão',45.00)">+</button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="aperitivos">
+        <h3>Aperitivos e Porções 🧀</h3>
+        <img class="section-img" src="crops/part_05.jpg" alt="Aperitivos">
+        <ul class="menu-list" id="list-aperitivos">
+          <li>
+            <div class="item-details">
+              <span>Linguiça Defumada</span>
+            </div>
+            <strong>R$ 28,00</strong><button class="add-btn" onclick="addToCart('ape1','Linguiça Defumada',28.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Carne do Sol Desfiada (500g)</span>
+            </div>
+            <strong>R$ 49,00</strong><button class="add-btn" onclick="addToCart('ape2','Carne do Sol Desfiada',49.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Frango a Passarinho</span>
+            </div>
+            <strong>R$ 38,00</strong><button class="add-btn" onclick="addToCart('ape3','Frango a Passarinho',38.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Maminha na Chapa</span>
+            </div>
+            <strong>R$ 55,00</strong><button class="add-btn" onclick="addToCart('ape4','Maminha na Chapa',55.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Batata Frita</span>
+            </div>
+            <strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('ape5','Batata Frita',25.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Pão de Alho (unidade)</span>
+            </div>
+            <strong>R$ 8,00</strong><button class="add-btn" onclick="addToCart('ape6','Pão de Alho',8.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Queijo Coalho Grelhado</span>
+            </div>
+            <strong>R$ 29,00</strong><button class="add-btn" onclick="addToCart('ape7','Queijo Coalho Grelhado',29.00)">+</button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="salgados">
+        <h3>Salgados 🥟</h3>
+        <img class="section-img" src="crops/part_04.jpg" alt="Salgados">
+        <ul class="menu-list" id="list-salgados">
+          <li>
+            <div class="item-details">
+              <span>Coxinha</span>
+            </div>
+            <strong>R$ 7,00</strong><button class="add-btn" onclick="addToCart('sal1','Coxinha',7.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Kibe</span>
+            </div>
+            <strong>R$ 7,00</strong><button class="add-btn" onclick="addToCart('sal2','Kibe',7.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Empada de Camarão</span>
+            </div>
+            <strong>R$ 8,00</strong><button class="add-btn" onclick="addToCart('sal3','Empada de Camarão',8.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Croissant</span>
+            </div>
+            <strong>R$ 10,00</strong><button class="add-btn" onclick="addToCart('sal4','Croissant',10.00)">+</button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="frutosdomar">
+        <h3>Frutos do Mar 🦞</h3>
+        <img class="section-img" src="crops/part_06.jpg" alt="Frutos do Mar">
+        <ul class="menu-list" id="list-frutosdomar">
+          <li>
+            <div class="item-details">
+              <span>Moqueca de Camarão (Serve 2)</span>
+            </div>
+            <strong>R$ 89,00</strong><button class="add-btn" onclick="addToCart('mar1','Moqueca de Camarão',89.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Moqueca Mista (Serve 2)</span>
+            </div>
+            <strong>R$ 85,00</strong><button class="add-btn" onclick="addToCart('mar2','Moqueca Mista',85.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Camarão Alho e Óleo</span>
+            </div>
+            <strong>R$ 58,00</strong><button class="add-btn" onclick="addToCart('mar3','Camarão Alho e Óleo',58.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Peixe Frito (inteiro)</span>
+            </div>
+            <strong>R$ 65,00</strong><button class="add-btn" onclick="addToCart('mar4','Peixe Frito (inteiro)',65.00)">+</button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="caldos">
+        <h3>Caldos 🍲</h3>
+        <img class="section-img" src="crops/part_07.jpg" alt="Caldos">
+        <ul class="menu-list" id="list-caldos">
+          <li>
+            <div class="item-details">
+              <span>Caldo de Camarão</span>
+            </div>
+            <strong>R$ 18,00</strong><button class="add-btn" onclick="addToCart('cal1','Caldo de Camarão',18.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Caldo de Sururu</span>
+            </div>
+            <strong>R$ 16,00</strong><button class="add-btn" onclick="addToCart('cal2','Caldo de Sururu',16.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Caldo de Feijão</span>
+            </div>
+            <strong>R$ 14,00</strong><button class="add-btn" onclick="addToCart('cal3','Caldo de Feijão',14.00)">+</button>
+          </li>
+          <li>
+            <div class="item-details">
+              <span>Caldo de Kenga</span>
+            </div>
+            <strong>R$ 15,00</strong><button class="add-btn" onclick="addToCart('cal4','Caldo de Kenga',15.00)">+</button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="cervejas">
+        <h3>Cervejas (600ml / Long Neck) 🍺</h3>
+        <img class="section-img" src="crops/part_08.jpg" alt="Cervejas">
+        <ul class="menu-list" id="list-cervejas">
+          <li><span>Original 600ml</span><strong>R$ 14,00</strong><button class="add-btn" onclick="addToCart('cer1','Original 600ml',14.00)">+</button></li>
+          <li><span>Itaipava Premium 600ml</span><strong>R$ 12,00</strong><button class="add-btn" onclick="addToCart('cer2','Itaipava Premium 600ml',12.00)">+</button></li>
+          <li><span>Heineken 600ml</span><strong>R$ 18,00</strong><button class="add-btn" onclick="addToCart('cer3','Heineken 600ml',18.00)">+</button></li>
+          <li><span>Skol Beats (Long Neck)</span><strong>R$ 10,00</strong><button class="add-btn" onclick="addToCart('cer4','Skol Beats (LN)',10.00)">+</button></li>
+          <li><span>Corona (Long Neck)</span><strong>R$ 12,00</strong><button class="add-btn" onclick="addToCart('cer5','Corona (LN)',12.00)">+</button></li>
+        </ul>
+      </section>
+
+      <section class="card" id="drinks">
+        <h3>Drinks e Caipirinhas 🍹</h3>
+        <img class="section-img" src="crops/part_09.jpg" alt="Drinks">
+        <ul class="menu-list" id="list-drinks">
+          <li><span>Caipirinha (Limão, Morango, Abacaxi)</span><strong>R$ 22,00</strong><button class="add-btn" onclick="addToCart('d1','Caipirinha de Fruta',22.00)">+</button></li>
+          <li><span>Caipiroska</span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('d2','Caipiroska',25.00)">+</button></li>
+          <li><span>Mojito</span><strong>R$ 28,00</strong><button class="add-btn" onclick="addToCart('d3','Mojito',28.00)">+</button></li>
+          <li><span>Sex on the Beach</span><strong>R$ 28,00</strong><button class="add-btn" onclick="addToCart('d4','Sex on the Beach',28.00)">+</button></li>
+        </ul>
+      </section>
+
+      <section class="card" id="destilados">
+        <h3>Destilados (Garrafas)</h3>
+        <img class="section-img" src="crops/part_09.jpg" alt="Destilados">
+        <ul class="menu-list" id="list-destilados">
+          <li><span>Old Parr (12 anos)</span><strong>R$ 220,00</strong><button class="add-btn" onclick="addToCart('des1','Whisky Old Parr 12y',220.00)">+</button></li>
+          <li><span>Red Label</span><strong>R$ 160,00</strong><button class="add-btn" onclick="addToCart('des2','Whisky Red Label',160.00)">+</button></li>
+          <li><span>Gin Tônica (Taça)</span><strong>R$ 35,00</strong><button class="add-btn" onclick="addToCart('des3','Gin Tônica (Taça)',35.00)">+</button></li>
+          <li><span>Vodka Smirnoff (Garrafa)</span><strong>R$ 80,00</strong><button class="add-btn" onclick="addToCart('des4','Vodka Smirnoff (Garrafa)',80.00)">+</button></li>
+        </ul>
+      </section>
+
+      <section class="card" id="semalcool">
+        <h3>Sem Álcool 🥤</h3>
+        <img class="section-img" src="crops/part_07.jpg" alt="Sem Álcool">
+        <ul class="menu-list" id="list-semalcool">
+          <li><span>Refrigerante Lata (Coca/Guaraná)</span><strong>R$ 6,00</strong><button class="add-btn" onclick="addToCart('sa1','Refrigerante Lata',6.00)">+</button></li>
+          <li><span>Água Mineral</span><strong>R$ 5,00</strong><button class="add-btn" onclick="addToCart('sa2','Água Mineral',5.00)">+</button></li>
+          <li><span>Sucos Naturais (Laranja, Abacaxi)</span><strong>R$ 12,00</strong><button class="add-btn" onclick="addToCart('sa3','Suco Natural',12.00)">+</button></li>
+          <li><span>Água Tônica</span><strong>R$ 8,00</strong><button class="add-btn" onclick="addToCart('sa4','Água Tônica',8.00)">+</button></li>
+        </ul>
+      </section>
+
+      <section class="card" id="sobremesas">
+        <h3>Sobremesas 🍰</h3>
+        <img class="section-img" src="crops/part_10.jpg" alt="Sobremesas">
+        <ul class="menu-list" id="list-sobremesas">
+          <li><span>Pudim de Leite</span><strong>R$ 15,00</strong><button class="add-btn" onclick="addToCart('sob1','Pudim de Leite',15.00)">+</button></li>
+          <li><span>Brownie com Sorvete</span><strong>R$ 18,00</strong><button class="add-btn" onclick="addToCart('sob2','Brownie com Sorvete',18.00)">+</button></li>
+          <li><span>Mousse de Maracujá</span><strong>R$ 14,00</strong><button class="add-btn" onclick="addToCart('sob3','Mousse de Maracujá',14.00)">+</button></li>
+        </ul>
+      </section>
+    </div>
+
+    <aside>
+      <div class="info card">
+        <h3>Informações</h3>
+        <p><strong>Endereço:</strong> Rua Principal, 123 — Centro</p>
+        <p><strong>Telefone / WhatsApp:</strong> (71) 99311-4057</p>
+        <p><strong>Horário:</strong> Terça a Domingo, 18h às 02h</p>
+        <hr>
+        <h4>Galeria</h4>
+        <img src="crops/part_12.jpg" alt="galeria" style="width:100%;border-radius:8px;object-fit:cover">
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4>Observações</h4>
+        <p>Pedidos via WhatsApp. Após enviar, aguarde confirmação do estabelecimento. Aceitamos cartão no local.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<button class="cart-fab" id="openCartBtn">🧾 Pedido</button>
+
+<div class="cart-panel" id="cartPanel" aria-hidden="true">
+  <h3>Seu pedido</h3>
+  <div id="cartItems"></div>
+  <div style="margin-top:8px">
+    <label for="clientName"><strong>Nome:</strong></label>
+    <input id="clientName" placeholder="Seu nome completo" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #eee">
+    <p class="warning-text" id="nameWarning">⚠️ Por favor, digite seu nome para enviar o pedido.</p>
+    <div style="margin-top:8px"><strong>Total: R$ <span id="cartTotal">0.00</span></strong></div>
+    <a id="sendWhats" class="whatsapp-btn" target="_blank" href="#">Enviar pedido pelo WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="ano"></span> BOTECO CAPITÃO DA LAJE</div>
+  <div style="display:flex;gap:8px;align-items:center">Aceitamos cartões
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#007ABE"/></svg>
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#EB001B"/></svg>
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#FFB000"/></svg>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  const WA_NUMBER = "5571993114057";
+  const cart = {};
+  const cartPanel = document.getElementById('cartPanel');
+  const nameInput = document.getElementById('clientName');
+  const nameWarning = document.getElementById('nameWarning');
+  const sendWhatsButton = document.getElementById('sendWhats');
+
+  function openCartPanel() {
+    cartPanel.style.display = 'block';
+    setTimeout(() => {
+      cartPanel.classList.add('is-open');
+    }, 10); 
+  }
+
+  function closeCartPanel() {
+    cartPanel.classList.remove('is-open');
+    setTimeout(() => {
+      cartPanel.style.display = 'none';
+    }, 200);
+  }
+
+  function addToCart(id, name, price){
+    if(!cart[id]) cart[id] = {name, price, qty:0};
+    cart[id].qty += 1;
+    renderCart();
+    if (!cartPanel.classList.contains('is-open')) {
+        openCartPanel();
+    }
+  }
+
+  function changeQty(id, delta){
+    if(!cart[id]) return;
+    cart[id].qty = Math.max(0, cart[id].qty + delta);
+    if(cart[id].qty === 0) delete cart[id];
+    renderCart();
+  }
+
+  function renderCart(){
+    const container = document.getElementById('cartItems');
+    container.innerHTML = '';
+    let total = 0;
+    
+    if(Object.keys(cart).length === 0) {
+        container.innerHTML = '<p style="text-align:center; opacity:.7; margin:16px 0;">O seu carrinho está vazio. Adicione itens para começar!</p>';
+        closeCartPanel();
+    }
+
+    for(const id in cart){
+      const it = cart[id];
+      const row = document.createElement('div');
+      row.className = 'cart-row';
+      row.innerHTML = `<div>${it.name} <small style="opacity:.75">x${it.qty}</small></div>
+        <div style="text-align:right; display:flex; align-items:center; gap:8px;">
+          R$ ${(it.price*it.qty).toFixed(2)}
+          <div class="qty">
+            <button onclick="changeQty('${id}',-1)">-</button>
+            <button onclick="changeQty('${id}',1)">+</button>
+          </div>
+        </div>`;
+      container.appendChild(row);
+      total += it.price * it.qty;
+    }
+    
+    document.getElementById('cartTotal').textContent = total.toFixed(2);
+    updateWhatsAppLink();
+  }
+  
+  function updateWhatsAppLink() {
+    const totalItems = Object.keys(cart).length;
+    const nameValue = nameInput.value.trim();
+    
+    if (totalItems === 0) {
+        sendWhatsButton.href = '#';
+        sendWhatsButton.innerText = 'Carrinho vazio';
+        sendWhatsButton.style.opacity = '.6';
+        sendWhatsButton.style.pointerEvents = 'none';
+        nameWarning.style.display = 'none';
+        return;
+    }
+
+    const clientName = encodeURIComponent(nameValue || 'Cliente SEM NOME');
+    let text = `*BOTECO CAPITÃO DA LAJE - PEDIDO*%0A%0A`;
+    text += `Olá, meu nome é *${decodeURIComponent(clientName)}*. Gostaria de fazer o pedido:%0A%0A`;
+    for(const id in cart){
+        const it = cart[id];
+        text += `${it.qty}x ${it.name} (R$ ${(it.price*it.qty).toFixed(2)})%0A`;
+    }
+    text += `%0A*TOTAL: R$ ${document.getElementById('cartTotal').textContent}*%0A%0A`;
+    text += `Aguardando confirmação.`;
+    
+    sendWhatsButton.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    sendWhatsButton.innerText = 'Enviar pedido pelo WhatsApp';
+    sendWhatsButton.style.opacity = '1';
+    sendWhatsButton.style.pointerEvents = 'auto';
+
+    if (nameValue.length < 3) {
+        sendWhatsButton.href = '#';
+        sendWhatsButton.style.opacity = '.4';
+        sendWhatsButton.style.pointerEvents = 'none';
+        nameWarning.style.display = 'block';
+    } else {
+        nameWarning.style.display = 'none';
+    }
+  }
+
+  document.getElementById('openCartBtn').addEventListener('click', (ev) => {
+    if (cartPanel.classList.contains('is-open')) {
+      closeCartPanel();
+    } else {
+      openCartPanel();
+    }
+  });
+
+  nameInput.addEventListener('input', updateWhatsAppLink);
+
+  renderCart();
+
+  sendWhatsButton.addEventListener('click', (ev) => {
+    if (nameInput.value.trim().length < 3) {
+        ev.preventDefault();
+        nameWarning.style.display = 'block';
