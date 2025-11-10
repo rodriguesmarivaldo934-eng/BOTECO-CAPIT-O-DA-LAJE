@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BOTECO CAPITÃO DA LAJE — Cardápio</title>
+
+<style>
+  :root{
+    --bg:#f4efe6;
+    --wood:#a87448;
+    --dark:#3b2b22;
+    --accent:#d97706;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+  header{background:var(--wood);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:30}
+  header img{height:56px;border-radius:8px;object-fit:cover}
+  header .brand h1{margin:0;font-size:1.25rem}
+  .container{max-width:980px;margin:18px auto;padding:0 16px 100px}
+  .hero{background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center}
+  .hero img{width:180px;height:120px;object-fit:cover;border-radius:8px}
+  .hero .txt h2{margin:0 0 6px 0}
+  .sections{margin-top:14px;display:grid;grid-template-columns:1fr 320px;gap:14px}
+  .left{display:block}
+  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.06);margin-bottom:14px}
+  .section-img{width:100%;border-radius:8px;display:block;margin-bottom:10px;object-fit:cover}
+  h3{margin:0 0 10px 0}
+  .menu-list{list-style:none;padding:0;margin:0}
+  .menu-list li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eee}
+  .menu-list li:last-child{border-bottom:none}
+  .add-btn{background:var(--accent);color:#fff;border:none;padding:6px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+  aside .info{position:sticky;top:84px}
+  .cart-fab{position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;padding:12px 14px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,0.18);z-index:80;border:none;font-weight:800;cursor:pointer}
+  .cart-panel{position:fixed;right:16px;bottom:86px;width:360px;max-height:70vh;overflow:auto;background:#fff;border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,0.18);display:none;z-index:90}
+  .cart-row{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;align-items:center}
+  .qty{display:flex;gap:6px;align-items:center}
+  .qty button{background:var(--wood);border:none;color:#fff;padding:6px 8px;border-radius:6px}
+  .whatsapp-btn{display:block;text-decoration:none;background:#25D366;color:#fff;padding:.7rem;border-radius:8px;text-align:center;font-weight:700;margin-top:.6rem}
+  footer{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:.6rem 1rem;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+  @media (max-width:900px){
+    .sections{grid-template-columns:1fr}
+    .cart-panel{right:8px;left:8px;width:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+
+  <img src="crops/part_01.jpg" alt="logo">
+
+
+
+  <div class="brand">
+    <h1>BOTECO CAPITÃO DA LAJE</h1>
+    <div style="font-size:.85rem;opacity:.95">Faça seu pedido pelo WhatsApp </div>
+  </div>
+
+</header>
+
+<main class="container">
+  <section class="hero card" aria-label="introducao">
+    <img src="crops/cartaz.jpg" alt="cartaz">
+    <div class="txt">
+      <h2>Bem-vindo ao Boteco da Laje </h2>
+      <p>Selecione os itens abaixo e envie seu pedido direto para o WhatsApp. Não esqueça de preencher seu nome antes de enviar.</p>
+    </div>
+  </section>
+
+  <div class="sections">
+    <div class="left">
+
+      <!-- CATEGORIA:🍽️ EXECUTIVOS -->
+      <section class="card" id="🍽️ executivos">
+        <h3>🍽️ Executivos</h3>
+        <ul class="menu-list" id="list-🍽️ executivos">
+
+        <img class="section-img" src="crops/executivo.jpg" alt="">
+
+
+
+<li><span>1- Omelete de frango </span><strong></span><strong>R$ 26,00</strong><button class="add-btn" onclick="addToCart('1','Omelete de frango',26.00)">+</button></li>
+
+<li><span>2- Bife a cavala</span><strong></span><strong>R$ 30,00</strong><button class="add-btn" onclick="addToCart('2','Bife a cavala',30.00)">+</button></li>
+
+<li><span> 3- Picanha</span><strong></span><strong>R$ 45,00</strong><button class="add-btn" onclick="addToCart('3','Picanha',45.00)">+</button></li>
+
+<li><span> 4- Filé a parmegiana </span><strong></span><strong>R$ 35,00</strong><button class="add-btn" onclick="addToCart('4','Filé a parmegiana',35.00)">+</button></li>
+
+<li><span> 5- Bisteca </span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('5','Bisteca',25.00)">+</button></li>
+      
+<li><span> 6- Carneiro </span><strong></span><strong>R$ 30,00</strong><button class="add-btn" onclick="addToCart('6','Carneiro',30.00)">+</button></li>
+      
+<li><span> 7- Omelete de Carne </span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('7','Omelete de carne',25.00)">+</button></li>
+
+<li><span> 8- Posta de peixe </span><strong></span><strong>R$ 30,00</strong><button class="add-btn" onclick="addToCart('8','Posta de peixe',30.00)">+</button></li>
+
+
+
+  </ul>
+      </section>
+
+      <!-- CATEGORIA:🥐 SALGADOS -->
+      <section class="card" id="🥐 salgados">
+        <h3>🥐 Salgados</h3>
+        <ul class="menu-list" id="list-🥐 salgados">
+
+        <img class="section-img" src="crops/salgados.jpg" alt="fritas">
+
+         <li><span>61- Bolinho de bacalhau (8unid) </span><strong></span><strong> R$ 30,00</strong><button class="add-btn" onclick="addToCart('61','Bolinho de bacalhau (8 unid)',30.00)">+</button></li>
+ <li><span>62- Bolinho de aipim com camarão (8unid)</span><strong></span><strong>R$ 30,00 </strong><button class="add-btn" onclick="addToCart('62','Bolinho de aipim com camarão',30,00)">+</button></li>
+          <li><span>63- Kibe frito (8unid)</span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('63','Kibe frito',25,00)">+</button></li>
+          <li><span>64- Coxinha de frango (8unid) </span><strong></span><strong> R$ 30,00</strong><button class="add-btn" onclick="addToCart('64','Coxinha de frango (8 unid)',30.00)">+</button></li>
+          <li><span>65- Pastel de carne ou queijo </span><strong></span><strong> R$ 20,00</strong><button class="add-btn" onclick="addToCart('65','Pastel de carna ou queijo',20.00)">+</button></li>
+          <li><span>66- Bolinho de carne do sol </span><strong></span><strong> R$ 28,00</strong><button class="add-btn" onclick="addToCart('66','Bolinho de carne de sol',28.00)">+</button></li>
+          <li><span>67- Bolinho de charque </span><strong></span><strong> R$ 30,00</strong><button class="add-btn" onclick="addToCart('67','Bolinho de charque',30.00)">+</button></li>
+
+
+        </ul>
+      </section>
+
+      <!-- CATEGORIA:🍗 PETISCOS -->
+      <section class="card" id="🍗 petiscos">
+        <h3>🍗 Petiscos</h3>
+        <img class="section-img" src="crops/petiscos.jpg" alt="Petiscos">
+        <ul class="menu-list" id="list-🍗 petiscos">
+
+
+          <li><span>31- Escondidinho de frango</span><strong></span><strong>R$ 50,00</strong><button class="add-btn" onclick="addToCart('31','Escondidinho de frango',50.00)">+</button></li>
+          <li><span>32- Escondidinho de carne do sol</span><strong></span><strong>R$ 58,00</strong><button class="add-btn" onclick="addToCart('32','Escondidinho de carne do sol',58.00)">+</button></li>
+          <li><span>33- Escondidinho de camarão</span><strong></span><strong>R$ 65,00</strong><button class="add-btn" onclick="addToCart('33','Escondidinho de camarão',65.00)">+</button></li>
+          <li><span>34- Escondidinho do capitão</span><strong></span><strong>R$ 65,00</strong><button class="add-btn" onclick="addToCart('34','Escondidinho do capitão',65.00)">+</button></li>
+          <li><span>35- Escondidinho de fumeiro</span><strong></span><strong>R$ 60,00</strong><button class="add-btn" onclick="addToCart('35','Escondidinho de fumeiro',60.00)">+</button></li>
+          <li><span>36- Carne do sol com batata</span><strong></span><strong>R$ 55,00</strong><button class="add-btn" onclick="addToCart('36','Carne do sol com batata',55.00)">+</button></li>
+      <li><span>37- Carne do sol com queijo coalho</span><strong></span><strong>R$ 60,00</strong><button class="add-btn" onclick="addToCart('37','Carne do sol com queijo coalho',60.00)">+</button></li>
+
+      <li><span>38- Picanha na chapa com batata </span><strong></span><strong>R$ 75,00</strong><button class="add-btn" onclick="addToCart('38','Picanha na chapa com batata',75.00)">+</button></li>
+
+<li><span>39- Picanha na chapa com queijo coalho </span><strong></span><strong>R$ 80,00</strong><button class="add-btn" onclick="addToCart('39','Picanha na chapa com batata',80.00)">+</button></li>
+
+<li><span>40- Filé na chapa com fritas </span><strong></span><strong>R$ 70,00</strong><button class="add-btn" onclick="addToCart('40','Filé na chapa com fritas',70.00)">+</button></li>
+
+<li><span>41- Filé na chapa com queijo coalho </span><strong></span><strong>R$ 75,00</strong><button class="add-btn" onclick="addToCart('41','Filé na chapa com queijo coalho',75.00)">+</button></li>
+
+<li><span>42- Codorna assada com farofa e salada </span><strong></span><strong>R$ 20,00</strong><button class="add-btn" onclick="addToCart('42',' Codorna assada com farofa e salada ',20.00)">+</button></li>
+
+<li><span>43- Prato de frios </span><strong></span><strong>R$ 20,00</strong><button class="add-btn" onclick="addToCart('43',' Prato de frios ',20.00)">+</button></li>
+
+<li><span>44- Carne do sol com farofa e salada </span><strong></span><strong>R$ 50,00</strong><button class="add-btn" onclick="addToCart('44',' Carne do sol com farofa e salada ',50.00)">+</button></li>
+
+<li><span>45- Pirão do capitão</span><strong></span><strong>R$ 50,00</strong><button class="add-btn" onclick="addToCart('45',' Pirão do capitão',50.00)">+</button></li>
+
+<li><span>46- Frango à dorê</span><strong></span><strong>R$ 45,00</strong><button class="add-btn" onclick="addToCart('46',' Frango à dorê',45.00)">+</button></li>
+
+<li><span>47- Passarinha com farofa e salada </span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('47',' Passarinha com farofa e salada',25.00)">+</button></li>
+
+<li><span>48- Asinha de frango com farofa e salada </span><strong></span><strong>R$ 35,00</strong><button class="add-btn" onclick="addToCart('48',' Asinha de frango com farofa e salada',35.00)">+</button></li>
+
+<li><span>49- Batata Frita </span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('49',' Batata Frita',25.00)">+</button></li>
+
+
+   </ul>
+
+      </section>
+
+        <img class="section-img" src="crops/camarão.jpg" alt="🐟 MOQUECAS">
+
+      <!-- CATEGORIA: 🐟 MOQUECAS-->
+      <section class="card" id="🐟 MOQUECAS">
+        <h3>🐟 MOQUECAS</h3>
+        <ul class="menu-list" id="list-🐟 MOQUECAS">
+
+
+          <li><span>81- Moqueca de Peixe — Inteira </span><strong></span><strong>R$ 120,00</strong><button class="add-btn" onclick="addToCart('81','Moqueca de Peixe — Inteira ',120,00)">+</button></li>
+          <li><span>82- Moqueca de Peixe — Meia </span><strong></span><strong>R$ 85,00</strong><button class="add-btn" onclick="addToCart('82','Moqueca de Peixe — Meia ',85,00)">+</button></li>
+          <li><span>83- Moqueca Mista — Inteira </span><strong></span><strong>R$ 150,00</strong><button class="add-btn" onclick="addToCart('83','Moqueca de Peixe — Inteira ',150,00)">+</button></li>
+          <li><span>84- Moqueca Mista — Meia </span><strong></span><strong>R$ 150,00</strong><button class="add-btn" onclick="addToCart('84','Moqueca de Peixe — Inteira ',115,00)">+</button></li>
+          <li><span>85- Moqueca de Camarão — Inteira </span><strong></span><strong>R$ 165,00</strong><button class="add-btn" onclick="addToCart('85','Moqueca de Camarão — Inteira',165,00)">+</button></li>
+          <li><span>86- Moqueca de Camarão — Meia </span><strong></span><strong>R$ 115,00</strong><button class="add-btn" onclick="addToCart('86','Moqueca de Camarão — Meia ',115,00)">+</button></li>
+
+
+        </ul>
+
+      </section>
+
+
+
+   </ul>
+      </section>
+
+      <!-- CATEGORIA: 🦐 FRUTOS DO MAR-->
+      <section class="card" id="🦐 FRUTOS DO MAR">
+        <h3>🦐 FRUTOS DO MAR</h3>
+        <ul class="menu-list" id="list-🦐 FRUTOS DO MAR">
+
+
+          <li><span>101- Camarão ao Alho e Óleo</span><strong></span><strong>R$ 58,00</strong><button class="add-btn" onclick="addToCart('101','Moqueca de Peixe — Inteira ',58,00)">+</button></li>
+          <li><span>102- Lambreta</span><strong></span><strong>R$ 25,00</strong><button class="add-btn" onclick="addToCart('102','Lambreta ',25,00)">+</button></li>
+          <li><span>103- Marisco Galo</span><strong></span><strong>R$ 20,00</strong><button class="add-btn" onclick="addToCart('103','Marisco Galo ',20,00)">+</button></li>
+          <li><span>104- Casquinha de Siri</span><strong></span><strong>R$ 27,00</strong><button class="add-btn" onclick="addToCart('104','Casquinha de Siri ',27,00)">+</button></li>
+      <li><span>105- Peixe Frito (Agulha ou Pitinga)</span><strong></span><strong>R$ 35,00</strong><button class="add-btn" onclick="addToCart('81','Peixe Frito (Agulha ou Pitinga)',35,00)">+</button></li>
+          <li><span>106- Peixe Frito Posta</span><strong></span><strong>R$ 45,00</strong><button class="add-btn" onclick="addToCart('106','Peixe Frito Posta',45,00)">+</button></li>
+
+
+
+        </ul>
+      </section>
+
+
+
+
+      <!-- CATEGORIA: 🥣 CALDOS -->
+      <section class="card" id="🥣 CALDOS">
+        <h3>🥣 CALDOS</h3>
+        <img class="section-img" src="crops/caldo.jpg" alt="🥣 CALDOS">
+        <ul class="menu-list" id="list-🥣 CALDOS">
+
+
+          <li><span>121- Sururu</span><strong></span><strong>R$ 18,00</strong><button class="add-btn" onclick="addToCart('121','Sururu',18,00)">+</button></li>
+          <li><span>122- Peguari</span><strong></span><strong>R$ 20,00</strong><button class="add-btn" onclick="addToCart('122','Peguari',20,00)">+</button></li>
+          <li><span>123- Verde</span><strong></span><strong>R$ 15,00</strong><button class="add-btn" onclick="addToCart('123','Peguari',15,00)">+</button></li>
+          <li><span>124- Camarão</span><strong></span><strong>R$ 20,00</strong><button class="add-btn" onclick="addToCart('124','Peguari',20,00)">+</button></li>
+
+     
+
+   </ul>
+      </section>
+
+
+
+    </div>
+
+    <aside>
+      <div class="info card">
+        <h3>Informações</h3>
+        <p><strong>Endereço:</strong> Rua Antonio Balbino , 01 — Plataforma</p>
+        <p><strong>Telefone / WhatsApp:</strong> (71) 993114057</p>
+        <p><strong>Horário:</strong> Sexta, sábado e Domingo</p>
+
+        <hr>
+
+        <h4>Galeria</h4>
+
+        <img class="section-img" src="crops/galeria1.jpg" alt="galeria1">
+        <img class="section-img" src="crops/galeria2.jpg" alt="galeria2" style="width:100%;border-radius:8px;object-fit:cover">
+        <img class="section-img" src="crops/galeria3.jpg" alt="galeria3" style="width:100%;border-radius:8px;object-fit:cover">
+        <img class="section-img" src="crops/galeria4.jpg" alt="galeria4" style="width:100%;border-radius:8px;object-fit:cover">
+        <img class="section-img" src="crops/galeria5.jpg" alt="galeria5" style="width:100%;border-radius:8px;object-fit:cover">
+	<img class="section-img" src="crops/galeria6.jpg" alt="galeria6" style="width:100%;border-radius:8px;object-fit:cover">
+
+
+
+
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4>Observações</h4>
+        <p>Pedidos via WhatsApp. Após enviar, aguarde confirmação do estabelecimento. Aceitamos cartão no local.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<button class="cart-fab" id="openCartBtn">🧾 Pedido</button>
+
+<div class="cart-panel" id="cartPanel" aria-hidden="true">
+  <h3>Finalize seu pedido </h3>
+  <div id="cartItems"></div>
+  <div style="margin-top:8px">
+
+
+    <label for="clientName"><strong>Qual seu nome?</strong></label>
+    <input id="clientName" placeholder="Seu nome" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #eee">
+
+ <label for="clientName"><strong>Qual local de entrega?</strong></label>
+    <input id="clientName" placeholder="Qual local de entrega?" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #eee">
+
+
+    <div style="margin-top:8px"><strong>Total: R$ <span id="cartTotal">0.00</span></strong></div>  
+    <a id="sendWhats" class="whatsapp-btn" target="_blank" href="#">Enviar pedido pelo WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="ano"></span> BOTECO CAPITÃO DA LAJE</div>
+  <div style="display:flex;gap:8px;align-items:center">Aceitamos cartões
+
+    <!-- ícones simples -->
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#007ABE"/></svg>
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#EB001B"/></svg>
+    <svg width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" fill="#FFB000"/></svg>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  const WA_NUMBER = "5571993114057"; // já com +55 71...
+  const cart = {};
+
+  function addToCart(id, name, price)
+{
+    if(!cart[id]) cart[id] = {name, price, qty:0};
+    cart[id].qty += 1;
+    renderCart();
+    // abrir painel automaticamente para confirmar
+    document.getElementById('cartPanel').style.display = 'block';
+  }
+
+  function changeQty(id, delta){
+    if(!cart[id]) return;
+    cart[id].qty = Math.max(0, cart[id].qty + delta);
+    if(cart[id].qty === 0) delete cart[id];
+    renderCart();
+  }
+
+  function renderCart()
+
+
+{
+    
+document.getElementById('clientName').addEventListener('input', renderCart);
+
+const container = document.getElementById('cartItems');
+    container.innerHTML = '';
+    let total = 0;
+    for(const id in cart){
+      const it = cart[id];
+      const row = document.createElement('div');
+      row.className = 'cart-row';
+      row.innerHTML = `<div>${it.name} <small style="opacity:.75">x${it.qty}</small></div>
+        <div style="text-align:right">R$ ${(it.price*it.qty).toFixed(2)} 
+          <div class="qty" style="margin-top:6px">
+            <button onclick="changeQty('${id}',-1)">-</button>
+            <button onclick="changeQty('${id}',1)">+</button>
+          </div>
+        </div>`;
+      container.appendChild(row);
+      total += it.price * it.qty;
+    }
+    document.getElementById('cartTotal').textContent = total.toFixed(2);
+    const send = document.getElementById('sendWhats');
+    if(Object.keys(cart).length === 0){
+      send.href = '#';
+      send.innerText = 'Carrinho vazio';
+      send.style.pointerEvents = 'none';
+    } else {
+      const name = encodeURIComponent(document.getElementById('clientName').value.trim() || 'Cliente');    
+
+
+ 
+      let text = `Oi, meu nome é ${decodeURIComponent(name)}. Gostaria de fazer esse pedido:`;
+      for(const id in cart){
+        const it = cart[id];
+        text += `${it.qty} x ${it.name} - R$ ${(it.price*it.qty).toFixed(2)}`;
+      }
+      text += `Total: R$ ${document.getElementById('cartTotal').textContent}`;
+      send.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+      send.innerText = 'Enviar pedido pelo WhatsApp';
+      send.style.pointerEvents = 'auto';
+    }
+  }
+
+  document.getElementById('openCartBtn').addEventListener('click', ()=>{
+    const panel = document.getElementById('cartPanel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // fechar o painel se clicar fora (simples)
+  window.addEventListener('click', (ev)=>{
+    const panel = document.getElementById('cartPanel');
+    const fab = document.getElementById('openCartBtn');
+    if(ev.target !== panel && !panel.contains(ev.target) && ev.target !== fab){
+      // não fecha automaticamente para evitar perder dados; comente se quiser auto-fechar
+    }
+  });
+</script>
+
+</body>
+</html>
